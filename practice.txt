@@ -1,0 +1,14 @@
+*********************
+I'm sending message from WorldQueueMgr to Venus 
+
+
+Venus---
+I have local queue Local_Queue_In_Venus created
+I created receiver channel WorldQueueMgrToVenus
+
+WorldQueueMgr---
+I have Transmission_Queue which is transmission queue
+I created sender channel WorldQueueMgrToVenus which is connecting to localhost(1415) (<<IP_address>><<port listening to>>) and Transmission_Queue associated with it.
+I also need to create one remote queue Rmote_Queue_in_WolrdQueueMgr which is connecting to local queue Local_Queue_In_Venus in queue manager Venus via transmission queue Transmission_Queue
+
+Please note, receiver and sender channel name should be same.
