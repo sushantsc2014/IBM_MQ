@@ -1,0 +1,10 @@
+>dspmq  :: display queue manager status for all
+>dspmq -m manager_name :: status of named mq manager
+>strmqm manager_name :: start manager
+>endmqm manager_name :: stop manager
+>dspmqver :: version of MQ installed
+
+
+
+
+
