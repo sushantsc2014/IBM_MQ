@@ -4,7 +4,10 @@
 >endmqm manager_name :: stop manager
 >dspmqver :: version of MQ installed
 
+> amqsput <<queuename>> <<queue manager>> :: To put message
+> amqsget <<queuename>> <<queue manager>> :: To get message
 
 
+>runmqlsr -m <<queue manager name>> :: Listener status
 
-
+>runmqsc <<queue manager name>> :: this command will navigate into given queue manager and there are commands which can be used to create/modify/delete queue manager objects

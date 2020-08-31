@@ -1,0 +1,45 @@
+IBM MQ
+
+Four main things
+1. Queue Manager
+2. Queue
+3. Channel
+4. Listener
+
+1. Queue Manager-
+	Main component we can say. Objects belong to Queue Manager. Queues, channels, listeners are objects owned by Queue Manager. As we have DB schemas and tables, views, functions are owned by Schemas in database, we can compare Queue Managers are just like schemas. Queue Manager controlls all the objects. We create MQ objects inside Queue Manager.
+	
+	In my setup WorldQueueMgr and Venus, these two as of now are queue managers.
+	
+	command: crtmqm <<queue manager name>>
+	
+2. Queues-
+	Predefines queues are created by admins as per applications requirements. Local queues, Remote queues, Alias queues are Predefined queues.
+	Dynamic queues are created by MQ itself as and when required. Admin has no control over them.
+	
+	Local queues store messages. Application can put and get the messsage from Queues
+	command: define qlocal(<<local queue name>>)
+	
+	In application message has to travel from source to destination. Message should know destination where it has to travel. Remote queue contains address to destination.
+	Command: define qremote(<<remote queue name>>)
+	
+	Transmission queues- Send message across queue managers
+	
+	Alias names- pet name for existing queues
+	
+	Dead letter queues- If message doesn't deliever to destination, then message can be routed to dead letter queue.
+	
+3. Channel-
+	Queues are car. Channels are roads. Cars travel on roads, roads provides path to destination from source. Communication link between source, destination. Channels are unidirectionals like one-way roads.
+	Types- Sender channel, Receiver chaneel, Cluster sender chaneel, Cluster receiver channel etc.
+	
+4. Listener-
+	Listens to a port 
+	
+	
+
+---------------
+
+Configuration file- mqs.ini file
+C- program data- IBM MQ- mqs config file
+This files contains infor about queue managers present, default log path. We can manually change this file and it will automatically get modifiled as we do work from GUI.	

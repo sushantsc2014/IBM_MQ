@@ -1,4 +1,4 @@
-*********************
+********************* 1 ********************
 I'm sending message from WorldQueueMgr to Venus 
 
 
@@ -12,3 +12,55 @@ I created sender channel WorldQueueMgrToVenus which is connecting to localhost(1
 I also need to create one remote queue Rmote_Queue_in_WolrdQueueMgr which is connecting to local queue Local_Queue_In_Venus in queue manager Venus via transmission queue Transmission_Queue
 
 Please note, receiver and sender channel name should be same.
+
+
+********************** 2 *********************
+
+Creating Queue manager from CMD and local queue in it.
+
+>crtmqm Jupiter :: command will create Queue manager, it will aslo show path in data directory in C for this queue manager
+>dspmq :: will show status of all managers. Jupiter manager will be down. We have to start it.
+>dspmq -m Jupiter :: same commandas above, will show status for Jupiter only.
+>strmqm ::Jupiter will start the queue manager
+>dspmq :: will show all managers running
+
+>rummqsc Jupiter :: this will navigate me into Jupiter queue manager
+>define qlocal(jupiter_local_queue)  :: this will create a local queue with name jupiter_local_queue in Jupter queue manager.
+
+----------------------- from CMD-----------------------------
+C:\Program Files\IBM\MQ\bin>crtmqm Jupiter
+There are 70 days left in the trial period for this copy of IBM MQ.
+IBM MQ queue manager created.
+Directory 'C:\ProgramData\IBM\MQ\qmgrs\Jupiter' created.
+The queue manager is associated with installation 'Installation1'.
+Creating or replacing default objects for queue manager 'Jupiter'.
+Default objects statistics : 86 created. 0 replaced. 0 failed.
+Completing setup.
+Setup completed.
+
+C:\Program Files\IBM\MQ\bin>dspmq -m Jupiter
+QMNAME(Jupiter)                                           STATUS(Ended immediately)
+
+C:\Program Files\IBM\MQ\bin>strmqm Jupiter
+There are 70 days left in the trial period for this copy of IBM MQ.
+IBM MQ queue manager 'Jupiter' starting.
+The queue manager is associated with installation 'Installation1'.
+5 log records accessed on queue manager 'Jupiter' during the log replay phase.
+Log replay for queue manager 'Jupiter' complete.
+Transaction manager state recovered for queue manager 'Jupiter'.
+IBM MQ queue manager 'Jupiter' started using V9.2.0.0.
+
+C:\Program Files\IBM\MQ\bin>dspmq
+QMNAME(WorldQueueMgr)                                     STATUS(Running)
+QMNAME(Venus)                                             STATUS(Running)
+QMNAME(Jupiter)                                           STATUS(Running)
+
+C:\Program Files\IBM\MQ\bin>runmqsc Jupiter
+5724-H72 (C) Copyright IBM Corp. 1994, 2020.
+Starting MQSC for queue manager Jupiter.
+
+
+define qlocal(jupiter_local_queue)
+     1 : define qlocal(jupiter_local_queue)
+AMQ8006I: IBM MQ queue created.
+------------------------------------------------------------------
