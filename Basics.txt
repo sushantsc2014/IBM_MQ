@@ -36,10 +36,10 @@ Four main things
 4. Listener-
 	Listens to a port 
 	
-	
-
 ---------------
 
 Configuration file- mqs.ini file
 C- program data- IBM MQ- mqs config file
-This files contains infor about queue managers present, default log path. We can manually change this file and it will automatically get modifiled as we do work from GUI.	
+This files contains infor about queue managers present, default log path. We can manually change this file and it will automatically get modifiled as we do work from GUI.
+----------------
+Rfutil is a GUI tool to view/manage MQ
