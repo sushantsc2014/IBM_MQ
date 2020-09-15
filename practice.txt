@@ -18,13 +18,13 @@ Please note, receiver and sender channel name should be same.
 
 Creating Queue manager from CMD and local queue in it.
 
->crtmqm Jupiter :: command will create Queue manager, it will aslo show path in data directory in C for this queue manager
+>crtmqm Jupiter :: command will create Queue manager, it will also show path in data directory in C for this queue manager
 >dspmq :: will show status of all managers. Jupiter manager will be down. We have to start it.
 >dspmq -m Jupiter :: same commandas above, will show status for Jupiter only.
 >strmqm ::Jupiter will start the queue manager
 >dspmq :: will show all managers running
 
->rummqsc Jupiter :: this will navigate me into Jupiter queue manager
+>runmqsc Jupiter :: this will navigate me into Jupiter queue manager
 >define qlocal(jupiter_local_queue)  :: this will create a local queue with name jupiter_local_queue in Jupter queue manager.
 
 ----------------------- from CMD-----------------------------
@@ -63,4 +63,42 @@ Starting MQSC for queue manager Jupiter.
 define qlocal(jupiter_local_queue)
      1 : define qlocal(jupiter_local_queue)
 AMQ8006I: IBM MQ queue created.
-------------------------------------------------------------------
+---------------------------------------------------------------------
+======================================================================
+
+>dspmq
+QMNAME(WorldQueueMgr)                                     STATUS(Running)
+QMNAME(Venus)                                             STATUS(Ended immediately)
+QMNAME(Jupiter)                                           STATUS(Ended immediately)
+
+>strmqm Venus Jupiter
+
+
+***********PUT MESSAGE in Queue from CMD***************
+
+Command: >amqsput <<queue_name>> <<manager_name>>   (case sensitive)
+
+
+_________________CMD_____________________
+C:\WINDOWS\system32>amqsput JUPITER_LOCAL_QUEUE Jupiter
+Sample AMQSPUT0 start
+target queue is JUPITER_LOCAL_QUEUE
+Hello World!
+
+Sample AMQSPUT0 end
+
+C:\WINDOWS\system32>
+_________________________________________
+
+
+***********GET MESSAGE from Queue from CMD***************
+
+Command: >amqsget <<queue_name>> <<manager_name>>   (case sensitive)
+
+_________________CMD_____________________
+C:\WINDOWS\system32>amqsget JUPITER_LOCAL_QUEUE Jupiter
+Sample AMQSGET0 start
+message <Hello World!>
+no more messages
+Sample AMQSGET0 end
+_________________________________________
